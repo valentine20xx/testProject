@@ -1,0 +1,25 @@
+@if (error()) {
+<p class="error">{{ error() }}</p>
+} @else {
+@if (todos().length === 0 && !error()) {
+<mat-card appearance="outlined">
+  <mat-card-content>No todos yet.</mat-card-content>
+</mat-card>
+} @else {
+<mat-card>
+  <mat-list>
+    @for (todo of todos(); track todo.id) {
+    <mat-list-item>
+      <mat-checkbox matListItemIcon [checked]="todo.done" (change)="toggle(todo)" aria-label="done" />
+      <a matListItemTitle [routerLink]="['/todos', todo.id]" [class.done]="todo.done">{{ todo.title }}</a>
+      <span matListItemMeta class="actions">
+        <a matIconButton [routerLink]="['/todos', todo.id, 'edit']" aria-label="Edit"><mat-icon>edit</mat-icon></a>
+        <button matIconButton type="button" (click)="remove(todo)"
+          aria-label="Delete"><mat-icon>delete</mat-icon></button>
+      </span>
+    </mat-list-item>
+    }
+  </mat-list>
+</mat-card>
+}
+}

@@ -1,0 +1,7 @@
+a[matListItemTitle] { text-decoration: none; color: inherit; }
+.done { text-decoration: line-through; color: var(--mat-sys-outline); }
+.actions { display: flex; gap: .25rem; align-items: center; }
+.error { color: var(--mat-sys-error); }
+/* the checkbox (40px touch target) is taller than the 24px icon slot it is projected into */
+mat-list-item { --mat-list-list-item-leading-icon-size: 40px; --mat-list-list-item-leading-icon-start-space: 8px; }
+mat-checkbox { display: flex; align-items: center; justify-content: center; }

@@ -1,0 +1,22 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ isEdit ? 'Edit todo' : 'New todo' }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form #f="ngForm" (ngSubmit)="save()">
+      <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input matInput name="title" required [ngModel]="todo().title" (ngModelChange)="todo.set({ ...todo(), title: $event })" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput rows="4" name="description" [ngModel]="todo().description" (ngModelChange)="todo.set({ ...todo(), description: $event })"></textarea>
+      </mat-form-field>
+      <mat-checkbox name="done" [ngModel]="todo().done" (ngModelChange)="todo.set({ ...todo(), done: $event })">Done</mat-checkbox>
+      <div class="actions">
+        <button matButton="filled" type="submit" [disabled]="f.invalid">Save</button>
+        <a matButton routerLink="/todos">Cancel</a>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

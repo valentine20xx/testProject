@@ -1,0 +1,2 @@
+form { display: flex; flex-direction: column; gap: .5rem; padding-top: 1rem; }
+.actions { display: flex; gap: .5rem; margin-top: .5rem; }
